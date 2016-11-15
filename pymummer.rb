@@ -1,8 +1,8 @@
 class Pymummer < Formula
   desc "Python3 wrapper for running MUMmer and parsing the output"
   homepage "https://github.com/sanger-pathogens/pymummer"
-  url "https://github.com/sanger-pathogens/pymummer/archive/v0.9.0.tar.gz"
-  sha256 "e0c8bead3dacd1ecb29cdb1bdd60d7b52f13073dfbb152eefcfe08a147b9b3a1"
+  url "https://github.com/sanger-pathogens/pymummer/archive/v0.10.0.tar.gz"
+  sha256 "381927a3dfee34727da173bfc747b34a9ddecb1647c2d36c3df4ceb297f85309"
   head "https://github.com/sanger-pathogens/pymummer.git"
 
   bottle do
@@ -18,8 +18,8 @@ class Pymummer < Formula
   depends_on "homebrew/science/mummer"
 
   resource "pyfastaq" do
-    url "https://files.pythonhosted.org/packages/2a/46/6ece19838a79489556c97092e832bafeb46e7b28c52418a6c5a7568da999/pyfastaq-3.13.0.tar.gz"
-    sha256 "79bfe342e053d51efbc7a901489c62e996566b4baf0f33cde1caff3a387756af"
+    url "https://files.pythonhosted.org/packages/0e/5d/8b39442b62c43da835c89f4c244d037bc7fcd8b47b0c0fff6e8d9097a035/pyfastaq-3.14.0.tar.gz"
+    sha256 "54dc8cc8b3d24111f6939cf563833b8e9e78777b9cf7b82ca8ddec04aa1c05f2"
   end
 
   def install
