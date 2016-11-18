@@ -1,8 +1,8 @@
 class Pymummer < Formula
   desc "Python3 wrapper for running MUMmer and parsing the output"
   homepage "https://github.com/sanger-pathogens/pymummer"
-  url "https://github.com/sanger-pathogens/pymummer/archive/v0.10.0.tar.gz"
-  sha256 "381927a3dfee34727da173bfc747b34a9ddecb1647c2d36c3df4ceb297f85309"
+  url "https://github.com/sanger-pathogens/pymummer/archive/v0.10.1.tar.gz"
+  sha256 "8c358227b842a61477889db50af0918ea3e793fddc56f6a9900e6820f2712b20"
   head "https://github.com/sanger-pathogens/pymummer.git"
 
   bottle do
