@@ -3,6 +3,7 @@ class Numba < Formula
   homepage "http://numba.pydata.org/"
   url "https://files.pythonhosted.org/packages/6f/b1/e3773ec83b112caddc6d3808326c241f59261f569e6a8db90a2bde89c66e/numba-0.26.0.tar.gz"
   sha256 "84547fdd19783104a37f3662a45b8b32f940b2af55d2eb0467dc782af43420aa"
+  revision 1
 
   bottle do
     sha256 "e3635a687c3ed18eb5a27eac6bad35606ffac9d15b3bf08a720b842002b28c23" => :el_capitan
@@ -13,7 +14,7 @@ class Numba < Formula
   option "without-python", "Build without python2 support"
   depends_on :python3 => :optional
 
-  depends_on "homebrew/versions/llvm37"
+  depends_on "llvm@3.7"
   depends_on "homebrew/python/numpy"
 
   resource "enum34" do
