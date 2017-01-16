@@ -1,9 +1,8 @@
 class Numpy < Formula
   desc "Package for scientific computing with Python"
   homepage "http://www.numpy.org"
-  url "https://files.pythonhosted.org/packages/16/f5/b432f028134dd30cfbf6f21b8264a9938e5e0f75204e72453af08d67eb0b/numpy-1.11.2.tar.gz"
-  sha256 "04db2fbd64e2e7c68e740b14402b25af51418fc43a59d9e54172b38b906b0f69"
-  head "https://github.com/numpy/numpy.git"
+  url "https://files.pythonhosted.org/packages/b7/9d/8209e555ea5eb8209855b6c9e60ea80119dab5eff5564330b35aa5dc4b2c/numpy-1.12.0.zip"
+  sha256 "ff320ecfe41c6581c8981dce892fe6d7e69806459a899e294e4bf8229737b154"
 
   bottle do
     cellar :any_skip_relocation
@@ -16,23 +15,24 @@ class Numpy < Formula
     url "https://github.com/numpy/numpy.git"
 
     resource "Cython" do
-      url "https://pypi.python.org/packages/c6/fe/97319581905de40f1be7015a0ea1bd336a756f6249914b148a17eefa75dc/Cython-0.24.1.tar.gz"
-      sha256 "84808fda00508757928e1feadcf41c9f78e9a9b7167b6649ab0933b76f75e7b9"
+      url "https://files.pythonhosted.org/packages/b7/67/7e2a817f9e9c773ee3995c1e15204f5d01c8da71882016cac10342ef031b/Cython-0.25.2.tar.gz"
+      sha256 "f141d1f9c27a07b5a93f7dc5339472067e2d7140d1c5a9e20112a5665ca60306"
     end
   end
 
   option "without-python", "Build without python2 support"
+  option "without-test", "Don't run tests during installation"
+  option "with-openblas", "Use openBLAS instead of Apple's Accelerate Framework"
 
+  deprecated_option "without-check" => "without-test"
+
+  depends_on :fortran => :build
   depends_on :python => :recommended if MacOS.version <= :snow_leopard
   depends_on :python3 => :optional
-  depends_on :fortran => :build
-
-  option "without-check", "Don't run tests during installation"
-  option "with-openblas", "Use openBLAS instead of Apple's Accelerate Framework"
   depends_on "homebrew/science/openblas" => (OS.mac? ? :optional : :recommended)
 
   resource "nose" do
-    url "https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz"
+    url "https://files.pythonhosted.org/packages/58/a5/0dc93c3ec33f4e281849523a5a913fa1eea9a3068acfa754d44d88107a44/nose-1.3.7.tar.gz"
     sha256 "f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
   end
 
@@ -82,13 +82,13 @@ class Numpy < Formula
         "install", "--prefix=#{prefix}",
         "--single-version-externally-managed", "--record=installed.txt"
 
-      if build.with? "check"
-        cd HOMEBREW_TEMP do
-          with_environment({
-            "PYTHONPATH" => "#{dest_path}:#{nose_path}",
-            "PATH" => "#{bin}:#{ENV["PATH"]}"}) do
-              system python, "-c", "import numpy; assert numpy.test().wasSuccessful()"
-            end
+      next if build.without? "test"
+      cd HOMEBREW_TEMP do
+        with_environment(
+          "PYTHONPATH" => "#{dest_path}:#{nose_path}",
+          "PATH" => "#{bin}:#{ENV["PATH"]}"
+        ) do
+          system python, "-c", "import numpy; assert numpy.test().wasSuccessful()"
         end
       end
     end
