@@ -35,8 +35,8 @@ end
 class Matplotlib < Formula
   desc "Python 2D plotting library"
   homepage "http://matplotlib.org"
-  url "https://pypi.python.org/packages/source/m/matplotlib/matplotlib-1.5.1.tar.gz"
-  sha256 "3ab8d968eac602145642d0db63dd8d67c85e9a5444ce0e2ecb2a8fedc7224d40"
+  url "https://files.pythonhosted.org/packages/79/a9/db688816150a6ef91fd9ce284c828467f7271c7dd5982753a73a8e1aaafa/matplotlib-2.0.0.tar.gz"
+  sha256 "36cf0985829c1ab2b8b1dae5e2272e53ae681bf33ab8bedceed4f0565af5f813"
   head "https://github.com/matplotlib/matplotlib.git"
 
   bottle do
@@ -48,6 +48,7 @@ class Matplotlib < Formula
   end
 
   option "without-python", "Build without python2 support"
+
   depends_on :python => :recommended if MacOS.version <= :snow_leopard
   depends_on :python3 => :optional
 
@@ -88,53 +89,48 @@ class Matplotlib < Formula
   cxxstdlib_check :skip
 
   resource "setuptools" do
-    url "https://pypi.python.org/packages/source/s/setuptools/setuptools-18.6.1.tar.gz"
-    sha256 "ddb0f4bdd1ac0ceb41abfe561d6196a840abb76371551dbf0c3e59d8d5cde99a"
+    url "https://files.pythonhosted.org/packages/dc/8c/7c9869454bdc53e72fb87ace63eac39336879eef6f2bf96e946edbf03e90/setuptools-33.1.1.zip"
+    sha256 "6b20352ed60ba08c43b3611bdb502286f7a869fbfcf472f40d7279f1e77de145"
   end
 
   resource "Cycler" do
-    url "https://pypi.python.org/packages/source/C/Cycler/cycler-0.9.0.tar.gz"
-    sha256 "96dc4ddf27ef62c09990c6196ac1167685e89168042ec0ae4db586de023355bc"
+    url "https://files.pythonhosted.org/packages/c2/4b/137dea450d6e1e3d474e1d873cd1d4f7d3beed7e0dc973b06e8e10d32488/cycler-0.10.0.tar.gz"
+    sha256 "cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8"
   end
 
-  resource "funcsigs" do
-    url "https://pypi.python.org/packages/source/f/funcsigs/funcsigs-0.4.tar.gz"
-    sha256 "d83ce6df0b0ea6618700fe1db353526391a8a3ada1b7aba52fed7a61da772033"
+  resource "functools32" do
+    url "https://files.pythonhosted.org/packages/c5/60/6ac26ad05857c601308d8fb9e87fa36d0ebf889423f47c3502ef034365db/functools32-3.2.3-2.tar.gz"
+    sha256 "f6253dfbe0538ad2e387bd8fdfd9293c925d63553f5813c4e587745416501e6d"
   end
 
-  resource "nose" do
-    url "https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz"
-    sha256 "f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
-  end
-
-  resource "mock" do
-    url "https://pypi.python.org/packages/source/m/mock/mock-1.3.0.tar.gz"
-    sha256 "1e247dbecc6ce057299eb7ee019ad68314bb93152e81d9a6110d35f4d5eca0f6"
-  end
-
-  resource "pbr" do
-    url "https://pypi.python.org/packages/source/p/pbr/pbr-1.8.1.tar.gz"
-    sha256 "e2127626a91e6c885db89668976db31020f0af2da728924b56480fc7ccf09649"
+  resource "numpy" do
+    url "https://files.pythonhosted.org/packages/b7/9d/8209e555ea5eb8209855b6c9e60ea80119dab5eff5564330b35aa5dc4b2c/numpy-1.12.0.zip"
+    sha256 "ff320ecfe41c6581c8981dce892fe6d7e69806459a899e294e4bf8229737b154"
   end
 
   resource "pyparsing" do
-    url "https://pypi.python.org/packages/source/p/pyparsing/pyparsing-2.0.6.tar.gz"
-    sha256 "aea69042752ad7e9c436eea6ae5d40e73642e27f50edb6da4a2532030ef532da"
+    url "https://files.pythonhosted.org/packages/38/bb/bf325351dd8ab6eb3c3b7c07c3978f38b2103e2ab48d59726916907cd6fb/pyparsing-2.1.10.tar.gz"
+    sha256 "811c3e7b0031021137fc83e051795025fcb98674d07eb8fe922ba4de53d39188"
   end
 
   resource "python-dateutil" do
-    url "https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.2.tar.gz"
-    sha256 "3e95445c1db500a344079a47b171c45ef18f57d188dffdb0e4165c71bea8eb3d"
+    url "https://files.pythonhosted.org/packages/51/fc/39a3fbde6864942e8bb24c93663734b74e281b984d1b8c4f95d64b0c21f6/python-dateutil-2.6.0.tar.gz"
+    sha256 "62a2f8df3d66f878373fd0072eacf4ee52194ba302e00082828e0d263b0418d2"
   end
 
   resource "pytz" do
-    url "https://pypi.python.org/packages/source/p/pytz/pytz-2015.7.tar.bz2"
-    sha256 "fbd26746772c24cb93c8b97cbdad5cb9e46c86bbdb1b9d8a743ee00e2fb1fc5d"
+    url "https://files.pythonhosted.org/packages/d0/e1/aca6ef73a7bd322a7fc73fd99631ee3454d4fc67dc2bee463e2adf6bb3d3/pytz-2016.10.tar.bz2"
+    sha256 "7016b2c4fa075c564b81c37a252a5fccf60d8964aa31b7f5eae59aeb594ae02b"
   end
 
   resource "six" do
-    url "https://pypi.python.org/packages/source/s/six/six-1.10.0.tar.gz"
+    url "https://files.pythonhosted.org/packages/b3/b2/238e2590826bfdd113244a40d9d3eb26918bd798fc187e2360a8367068db/six-1.10.0.tar.gz"
     sha256 "105f8d68616f8248e24bf0e9372ef04d3cc10104f1980f54d57b2ce73a5ad56a"
+  end
+
+  resource "subprocess32" do
+    url "https://files.pythonhosted.org/packages/b8/2f/49e53b0d0e94611a2dc624a1ad24d41b6d94d0f1b0a078443407ea2214c2/subprocess32-3.2.7.tar.gz"
+    sha256 "1e450a4a4c53bf197ad6402c564b9f7a53539385918ef8f12bdf430a61036590"
   end
 
   def install
@@ -158,8 +154,14 @@ class Matplotlib < Formula
       bundle_path = libexec/"lib/python#{version}/site-packages"
       bundle_path.mkpath
       ENV.prepend_path "PYTHONPATH", bundle_path
-      resources.each do |r|
-        r.stage do
+
+      res = if version.to_s.start_with? "2"
+        resources.map(&:name).to_set
+      else
+        resources.map(&:name).to_set - ["functools32", "subprocess32"]
+      end
+      res.each do |r|
+        resource(r).stage do
           system python, *Language::Python.setup_install_args(libexec)
         end
       end
@@ -191,9 +193,8 @@ class Matplotlib < Formula
   test do
     ENV["PYTHONDONTWRITEBYTECODE"] = "1"
 
-    ohai "This test takes quite a while. Use --verbose to see progress."
     Language::Python.each_python(build) do |python, _|
-      system python, "-c", "import matplotlib as m"
+      system python, "-c", "import matplotlib"
     end
   end
 end
